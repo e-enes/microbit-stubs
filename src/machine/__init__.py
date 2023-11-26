@@ -2,7 +2,7 @@
 Low-level utilities
 """
 
-from microbit import MicroBitDigitalPin
+import microbit
 
 
 def unique_id() -> bytes:
@@ -39,7 +39,7 @@ def enable_irq(state: int) -> None:
     """
 
 
-def time_pulse(pin: 'MicroBitDigitalPin', pulse_level: int, timeout_us: int = 1000000) -> int:
+def time_pulse(pin: 'microbit.MicroBitDigitalPin', pulse_level: int, timeout_us: int = 1000000) -> int:
     """
     Time a pulse on a pin.
     :param pin: The pin to use

@@ -2,11 +2,13 @@
 Play sounds using the micro:bit
 """
 
-from __future__ import annotations
-from . import Sound, MicroBitTouchPin, pin0
+import typing
+import microbit
 
 
-def play(source: 'Sound' | 'SoundEffect' | 'AudioFrame', wait: bool = True, pin: 'MicroBitTouchPin' = pin0, return_pin: 'MicroBitTouchPin' | None = None) -> None:
+def play(source: typing.Union['microbit.Sound', 'SoundEffect', 'AudioFrame'], wait: bool = True,
+         pin: 'microbit.MicroBitTouchPin' = 'pin0',
+         return_pin: typing.Union['microbit.MicroBitTouchPin', None] = None) -> None:
     """
     Play a built-in sound, sound effect or custom audio frames.
     :param source: A built-in **Sound** such as **Sound.GIGGLE**, a **SoundEffect** or sample data as an iterable of **AudioFrame** objects.
@@ -49,7 +51,8 @@ class SoundEffect:
     SHAPE_CURVE = 1
     SHAPE_LOG = 2
 
-    def __init__(self, freq_start: int = 500, freq_end: int = 2500, duration: int = 500, vol_start: int = 255, vol_end: int = 0, waveform: int = WAVEFORM_SQUARE, fx: int = FX_NONE, shape: int = SHAPE_LOG):
+    def __init__(self, freq_start: int = 500, freq_end: int = 2500, duration: int = 500, vol_start: int = 255,
+                 vol_end: int = 0, waveform: int = WAVEFORM_SQUARE, fx: int = FX_NONE, shape: int = SHAPE_LOG):
         """
         :param freq_start: Start frequency in Hertz (Hz), a number between **0** and **9999**.
         :param freq_end: End frequency in Hertz (Hz), a number between **0** and **9999**.

@@ -2,7 +2,7 @@
 Log data to your micro:bit V2
 """
 
-from __future__ import annotations
+import typing
 
 MILLISECONDS = 1
 SECONDS = 2
@@ -11,7 +11,7 @@ HOURS = 4
 DAYS = 5
 
 
-def set_labels(*labels: str, timestamp: int | None = SECONDS) -> None:
+def set_labels(*labels: str, timestamp: typing.Union[int, None] = SECONDS) -> None:
     """
     Set up the log file header.
     :param labels: Any number of positional arguments, each corresponding to an entry in the log header.

@@ -2,10 +2,11 @@
 Communicate with devices using the serial peripheral interface (SPI) bus
 """
 
-from . import MicroBitDigitalPin, pin13, pin14, pin15
+import microbit
 
 
-def init(baudrate: int = 1000000, bits: int = 8, mode: int = 0, sclk: 'MicroBitDigitalPin' = pin13, mosi: 'MicroBitDigitalPin' = pin15, miso: 'MicroBitDigitalPin' = pin14) -> None:
+def init(baudrate: int = 1000000, bits: int = 8, mode: int = 0, sclk: 'microbit.MicroBitDigitalPin' = 'pin13',
+         mosi: 'microbit.MicroBitDigitalPin' = 'pin15', miso: 'microbit.MicroBitDigitalPin' = 'pin14') -> None:
     """
     Initialize SPI communication.
     :param baudrate: The speed of communication.

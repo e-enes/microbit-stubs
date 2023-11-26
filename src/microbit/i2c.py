@@ -2,11 +2,12 @@
 Communicate with devices using the I²C bus protocol
 """
 
-from __future__ import annotations
-from . import MicroBitDigitalPin, pin20, pin19
+import typing
+import microbit
 
 
-def init(freq: int = 100000, sda: 'MicroBitDigitalPin' = pin20, scl: 'MicroBitDigitalPin' = pin19) -> None:
+def init(freq: int = 100000, sda: 'microbit.MicroBitDigitalPin' = 'pin20',
+         scl: 'microbit.MicroBitDigitalPin' = 'pin19') -> None:
     """
     Re-initialize a peripheral.
     :param freq: Clock frequency
@@ -15,7 +16,7 @@ def init(freq: int = 100000, sda: 'MicroBitDigitalPin' = pin20, scl: 'MicroBitDi
     """
 
 
-def scan() -> list[int]:
+def scan() -> typing.List[int]:
     """
     Scan the bus for devices.
     :return: A list of 7-bit addresses corresponding to those devices that responded to the scan.
@@ -31,7 +32,7 @@ def read(addr: int, n: int) -> bytes:
     """
 
 
-def write(addr: int, buf: bytes | bytearray, repeat: bool = False) -> None:
+def write(addr: int, buf: typing.Union[bytes, bytearray], repeat: bool = False) -> None:
     """
     Write bytes to a device.
     :param addr: The 7-bit address of the device

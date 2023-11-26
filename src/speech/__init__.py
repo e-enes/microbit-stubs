@@ -2,8 +2,8 @@
 Make the micro:bit talk, sing and make other speech like sounds
 """
 
-from __future__ import annotations
-from microbit import MicroBitDigitalPin, pin0
+import typing
+import microbit
 
 
 def translate(words: str) -> str:
@@ -14,7 +14,8 @@ def translate(words: str) -> str:
     """
 
 
-def pronounce(phonemes: str, pitch: int = 64, speed: int = 72, mouth: int = 128, throat: int = 128, pin: 'MicroBitDigitalPin' | None = pin0) -> None:
+def pronounce(phonemes: str, pitch: int = 64, speed: int = 72, mouth: int = 128, throat: int = 128,
+              pin: typing.Union['microbit.MicroBitDigitalPin', None] = 'pin0') -> None:
     """
     Pronounce phonemes.
     :param phonemes: The string of phonemes to pronounce
@@ -26,7 +27,8 @@ def pronounce(phonemes: str, pitch: int = 64, speed: int = 72, mouth: int = 128,
     """
 
 
-def say(words: str, pitch: int = 64, speed: int = 72, mouth: int = 128, throat: int = 128, pin: 'MicroBitDigitalPin' | None = pin0) -> None:
+def say(words: str, pitch: int = 64, speed: int = 72, mouth: int = 128, throat: int = 128,
+        pin: typing.Union['microbit.MicroBitDigitalPin', None] = 'pin0') -> None:
     """
     Say English words.
     :param words: The string of words to say
@@ -38,7 +40,8 @@ def say(words: str, pitch: int = 64, speed: int = 72, mouth: int = 128, throat: 
     """
 
 
-def sing(phonemes, pitch: int = 64, speed: int = 72, mouth: int = 128, throat: int = 128, pin: 'MicroBitDigitalPin' | None = pin0) -> None:
+def sing(phonemes, pitch: int = 64, speed: int = 72, mouth: int = 128, throat: int = 128,
+         pin: typing.Union['microbit.MicroBitDigitalPin', None] = 'pin0') -> None:
     """
     Sing phonemes.
     :param phonemes: The string of words to sing

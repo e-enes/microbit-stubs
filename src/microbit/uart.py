@@ -2,13 +2,16 @@
 Communicate with a device using a serial interface
 """
 
-from __future__ import annotations
+import typing
+import microbit
 
 EVEN = 0
 ODD = 1
 
 
-def init(baudrate: int = 9600, bits: int = 8, parity: int | None = None, stop: int = 1, tx: 'MicroBitTouchPin' | None = None, rx: 'MicroBitTouchPin' | None = None) -> None:
+def init(baudrate: int = 9600, bits: int = 8, parity: typing.Union[int, None] = None, stop: int = 1,
+         tx: typing.Union['microbit.MicroBitTouchPin', None] = None,
+         rx: typing.Union['microbit.MicroBitTouchPin', None] = None) -> None:
     """
     Initialize serial communication.
     :param baudrate: The speed of communication.
@@ -27,7 +30,7 @@ def any() -> bool:
     """
 
 
-def read(nbytes: int | None = None) -> bytearray | None:
+def read(nbytes: typing.Union[int, None] = None) -> typing.Union[bytearray, None]:
     """
     Read bytes.
     :param nbytes: If nbytes is specified then read at most that many bytes, otherwise read as many bytes as possible
@@ -35,7 +38,7 @@ def read(nbytes: int | None = None) -> bytearray | None:
     """
 
 
-def readinto(buf: bytearray, nbytes: int | None = None) -> int | None:
+def readinto(buf: bytearray, nbytes: typing.Union[int, None] = None) -> typing.Union[int, None]:
     """
     Read bytes into the **buf**.
     :param buf: The buffer to write to.
@@ -51,7 +54,7 @@ def readline() -> str:
     """
 
 
-def write(buf: bytearray) -> int | None:
+def write(buf: bytearray) -> typing.Union[int, None]:
     """
     Write a buffer to the bus.
     :param buf: A bytes object or a string.

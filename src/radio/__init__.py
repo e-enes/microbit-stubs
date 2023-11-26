@@ -2,7 +2,7 @@
 Communicate between micro:bits with the built-in radio
 """
 
-from __future__ import annotations
+import typing
 
 
 RATE_1MBIT = 0
@@ -47,14 +47,14 @@ def send_bytes(message: bytes) -> None:
     """
 
 
-def receive_bytes() -> bytes | None:
+def receive_bytes() -> typing.Union[bytes, None]:
     """
     Receive the next incoming message on the message queue.
     :return: The message bytes if any, otherwise None.
     """
 
 
-def receive_bytes_into(buffer: bytearray) -> int | None:
+def receive_bytes_into(buffer: bytearray) -> typing.Union[int, None]:
     """
     Copy the next incoming message on the message queue into a buffer.
     :param buffer: The target buffer. The message is truncated if larger than the buffer.
@@ -69,7 +69,7 @@ def send(message: str) -> None:
     """
 
 
-def receive() -> str | None:
+def receive() -> typing.Union[str, None]:
     """
     Returns whatever was sent.
     :return: The message with the prepended bytes stripped and converted to a string.
@@ -77,7 +77,7 @@ def receive() -> str | None:
     """
 
 
-def receive_full() -> tuple | None:
+def receive_full() -> typing.Union[tuple, None]:
     """
     Returns a tuple containing three values representing the next incoming message on the message queue.
     :return: None if there is no message, otherwise a tuple of length three with the bytes, strength and timestamp values.

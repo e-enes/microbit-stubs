@@ -2,7 +2,7 @@
 Manage the power modes of the micro:bit (V2 only)
 """
 
-from __future__ import annotations
+import typing
 
 
 def off() -> None:
@@ -11,7 +11,7 @@ def off() -> None:
     """
 
 
-def deep_sleep(ms: int | None = None, wake_on=None, run_every: bool = True) -> None:
+def deep_sleep(ms: typing.Union[int, None] = None, wake_on=None, run_every: bool = True) -> None:
     """
     Set the micro:bit into a low power mode where it can wake up and continue operation.
     :param ms: A time in milliseconds to wait before it wakes up.

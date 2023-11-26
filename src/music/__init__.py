@@ -2,30 +2,30 @@
 Create and play melodies
 """
 
-from __future__ import annotations
-from microbit import MicroBitDigitalPin, pin0
+import typing
+import microbit
 
-DADADADUM: tuple
-ENTERTAINER: tuple
-PRELUDE: tuple
-ODE: tuple
-NYAN: tuple
-RINGTONE: tuple
-FUNK: tuple
-BLUES: tuple
-BIRTHDAY: tuple
-WEDDING: tuple
-FUNERAL: tuple
-PUNCHLINE: tuple
-PYTHON: tuple
-BADDY: tuple
-CHASE: tuple
-BA_DING: tuple
-WAWAWAWAA: tuple
-JUMP_UP: tuple
-JUMP_DOWN: tuple
-POWER_UP: tuple
-POWER_DOWN: tuple
+DADADADUM: typing.Tuple = tuple()
+ENTERTAINER: typing.Tuple = tuple()
+PRELUDE: typing.Tuple = tuple()
+ODE: typing.Tuple = tuple()
+NYAN: typing.Tuple = tuple()
+RINGTONE: typing.Tuple = tuple()
+FUNK: typing.Tuple = tuple()
+BLUES: typing.Tuple = tuple()
+BIRTHDAY: typing.Tuple = tuple()
+WEDDING: typing.Tuple = tuple()
+FUNERAL: typing.Tuple = tuple()
+PUNCHLINE: typing.Tuple = tuple()
+PYTHON: typing.Tuple = tuple()
+BADDY: typing.Tuple = tuple()
+CHASE: typing.Tuple = tuple()
+BA_DING: typing.Tuple = tuple()
+WAWAWAWAA: typing.Tuple = tuple()
+JUMP_UP: typing.Tuple = tuple()
+JUMP_DOWN: typing.Tuple = tuple()
+POWER_UP: typing.Tuple = tuple()
+POWER_DOWN: typing.Tuple = tuple()
 
 
 def set_tempo(ticks: int = 4, bpm: int = 120) -> None:
@@ -36,14 +36,14 @@ def set_tempo(ticks: int = 4, bpm: int = 120) -> None:
     """
 
 
-def get_tempo() -> tuple[int, int]:
+def get_tempo() -> typing.Tuple[int, int]:
     """
     Gets the current tempo as a tuple of integers: (ticks, bpm).
     :return: The temp as a tuple with two integer values, the ticks then the beats per minute.
     """
 
 
-def play(music: tuple, pin: 'MicroBitDigitalPin' | None = pin0, wait: bool = True, loop: bool = False) -> None:
+def play(music: tuple, pin: typing.Union['microbit.MicroBitDigitalPin', None] = 'pin0', wait: bool = True, loop: bool = False) -> None:
     """
     Plays music.
     :param music: Music specified in a special notation
@@ -53,7 +53,7 @@ def play(music: tuple, pin: 'MicroBitDigitalPin' | None = pin0, wait: bool = Tru
     """
 
 
-def pitch(frequency: int, duration: int = -1, pin: 'MicroBitDigitalPin' = pin0, wait: bool = True) -> None:
+def pitch(frequency: int, duration: int = -1, pin: 'microbit.MicroBitDigitalPin' = 'pin0', wait: bool = True) -> None:
     """
     Play a note.
     :param frequency: An integer frequency
@@ -63,7 +63,7 @@ def pitch(frequency: int, duration: int = -1, pin: 'MicroBitDigitalPin' = pin0, 
     """
 
 
-def stop(pin: 'MicroBitDigitalPin' = pin0) -> None:
+def stop(pin: 'microbit.MicroBitDigitalPin' = 'pin0') -> None:
     """
     Stops all music playback on the built-in speaker and any pin outputting sound.
     :param pin: An optional argument can be provided to specify a pin

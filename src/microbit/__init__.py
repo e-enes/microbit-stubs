@@ -3,12 +3,12 @@ Pins, images, sounds, temperature and volume
 """
 
 from __future__ import annotations
-from typing import Callable
+import typing
+from . import accelerometer, audio, compass, display, i2c, microphone, speaker, uart
 
-from . import accelerometer, audio, compass, display, i2c, microphone, speaker, spi, uart
 
-
-def run_every(callback: Callable = None, days: int = 0, h: int = 0, min: int = 0, s: int = 0, ms: int = 0) -> None:
+def run_every(callback: typing.Callable = None, days: int = 0, h: int = 0, min: int = 0, s: int = 0,
+              ms: int = 0) -> None:
     """
     Schedule to run a function at the interval specified by the time arguments V2 only.
     :param callback: Function to call at the provided interval. Omit when using as a decorator.
@@ -33,7 +33,8 @@ def reset() -> None:
     """
 
 
-def scale(value: int | float, from_: tuple[int | float, int | float], to: tuple[int | float, int | float]) -> int | float:
+def scale(value: typing.Union[int, float], from_: tuple[typing.Union[int, float], typing.Union[int, float]],
+          to: tuple[typing.Union[int, float], typing.Union[int, float]]) -> typing.Union[int, float]:
     """
     Converts a value from a range to a floating point range.
     :param value: A number to convert.
@@ -95,8 +96,8 @@ class Button:
         """
 
 
-button_a: Button
-button_b: Button
+button_a: Button = Button()
+button_b: Button = Button()
 
 
 class MicroBitDigitalPin:
@@ -134,11 +135,11 @@ class MicroBitDigitalPin:
 
     def get_mode(self) -> str:
         """
-        Returns the pin mode.
-        :return: "unused", "analog", "read_digital", "write_digital", "display", "button", "music", "audio", "touch", "i2c", or "spi"
+        Returns the pin mode. :return: "unused", "analog", "read_digital", "write_digital", "display", "button",
+        "music", "audio", "touch", "i2c", or "spi"
         """
 
-    def write_analog(self, value: int | float) -> None:
+    def write_analog(self, value: typing.Union[int, float]) -> None:
         """
         Output a PWM signal on the pin, with the duty cycle proportional to value.
         :param value: An integer or a floating point number between 0 (0% duty cycle) and 1023 (100% duty).
@@ -190,30 +191,30 @@ class MicroBitTouchPin(MicroBitAnalogDigitalPin):
         """
 
 
-pin0: MicroBitTouchPin
-pin1: MicroBitTouchPin
-pin2: MicroBitTouchPin
-pin3: MicroBitAnalogDigitalPin
-pin4: MicroBitAnalogDigitalPin
-pin5: MicroBitDigitalPin
-pin6: MicroBitDigitalPin
-pin7: MicroBitDigitalPin
-pin8: MicroBitDigitalPin
-pin9: MicroBitDigitalPin
-pin10: MicroBitAnalogDigitalPin
-pin11: MicroBitDigitalPin
-pin12: MicroBitDigitalPin
-pin13: MicroBitDigitalPin
-pin14: MicroBitDigitalPin
-pin15: MicroBitDigitalPin
-pin16: MicroBitDigitalPin
-pin17: MicroBitDigitalPin
-pin18: MicroBitDigitalPin
-pin19: MicroBitDigitalPin
-pin20: MicroBitDigitalPin
+pin0: MicroBitTouchPin = MicroBitTouchPin()
+pin1: MicroBitTouchPin = MicroBitTouchPin()
+pin2: MicroBitTouchPin = MicroBitTouchPin()
+pin3: MicroBitAnalogDigitalPin = MicroBitAnalogDigitalPin()
+pin4: MicroBitAnalogDigitalPin = MicroBitAnalogDigitalPin()
+pin5: MicroBitDigitalPin = MicroBitDigitalPin()
+pin6: MicroBitDigitalPin = MicroBitDigitalPin()
+pin7: MicroBitDigitalPin = MicroBitDigitalPin()
+pin8: MicroBitDigitalPin = MicroBitDigitalPin()
+pin9: MicroBitDigitalPin = MicroBitDigitalPin()
+pin10: MicroBitAnalogDigitalPin = MicroBitAnalogDigitalPin()
+pin11: MicroBitDigitalPin = MicroBitDigitalPin()
+pin12: MicroBitDigitalPin = MicroBitDigitalPin()
+pin13: MicroBitDigitalPin = MicroBitDigitalPin()
+pin14: MicroBitDigitalPin = MicroBitDigitalPin()
+pin15: MicroBitDigitalPin = MicroBitDigitalPin()
+pin16: MicroBitDigitalPin = MicroBitDigitalPin()
+pin17: MicroBitDigitalPin = MicroBitDigitalPin()
+pin18: MicroBitDigitalPin = MicroBitDigitalPin()
+pin19: MicroBitDigitalPin = MicroBitDigitalPin()
+pin20: MicroBitDigitalPin = MicroBitDigitalPin()
 
-pin_logo: MicroBitTouchPin
-pin_speaker: MicroBitDigitalPin
+pin_logo: MicroBitTouchPin = MicroBitTouchPin()
+pin_speaker: MicroBitDigitalPin = MicroBitDigitalPin()
 
 
 class Image:
@@ -221,73 +222,72 @@ class Image:
     An image to show on the micro:bit LED display.
     """
 
-    HEART: Image
-    HEART_SMALL: Image
-    HAPPY: Image
-    SMILE: Image
-    SAD: Image
-    CONFUSED: Image
-    ANGRY: Image
-    ASLEEP: Image
-    SURPRISED: Image
-    SILLY: Image
-    FABULOUS: Image
-    MEH: Image
-    YES: Image
-    NO: Image
-    CLOCK12: Image
-    CLOCK11: Image
-    CLOCK10: Image
-    CLOCK9: Image
-    CLOCK8: Image
-    CLOCK7: Image
-    CLOCK6: Image
-    CLOCK5: Image
-    CLOCK4: Image
-    CLOCK3: Image
-    CLOCK2: Image
-    CLOCK1: Image
-    ARROW_N: Image
-    ARROW_NE: Image
-    ARROW_E: Image
-    ARROW_SE: Image
-    ARROW_S: Image
-    ARROW_SW: Image
-    ARROW_W: Image
-    ARROW_NW: Image
-    TRIANGLE: Image
-    TRIANGLE_LEFT: Image
-    CHESSBOARD: Image
-    DIAMOND: Image
-    DIAMOND_SMALL: Image
-    SQUARE: Image
-    SQUARE_SMALL: Image
-    RABBIT: Image
-    COW: Image
-    MUSIC_CROTCHET: Image
-    MUSIC_QUAVER: Image
-    MUSIC_QUAVERS: Image
-    PITCHFORK: Image
-    XMAS :Image
-    PACMAN: Image
-    TARGET: Image
-    TSHIRT: Image
-    ROLLERSKATE: Image
-    DUCK: Image
-    HOUSE: Image
-    TORTOISE: Image
-    BUTTERFLY: Image
-    STICKFIGURE: Image
-    GHOST: Image
-    SWORD: Image
-    GIRAFFE: Image
-    SKULL: Image
-    UMBRELLA: Image
-    SNAKE: Image
-    SCISSORS: Image
-    ALL_CLOCKS: list[Image]
-    ALL_ARROWS: list[Image]
-
+    HEART: Image = None
+    HEART_SMALL: Image = None
+    HAPPY: Image = None
+    SMILE: Image = None
+    SAD: Image = None
+    CONFUSED: Image = None
+    ANGRY: Image = None
+    ASLEEP: Image = None
+    SURPRISED: Image = None
+    SILLY: Image = None
+    FABULOUS: Image = None
+    MEH: Image = None
+    YES: Image = None
+    NO: Image = None
+    CLOCK12: Image = None
+    CLOCK11: Image = None
+    CLOCK10: Image = None
+    CLOCK9: Image = None
+    CLOCK8: Image = None
+    CLOCK7: Image = None
+    CLOCK6: Image = None
+    CLOCK5: Image = None
+    CLOCK4: Image = None
+    CLOCK3: Image = None
+    CLOCK2: Image = None
+    CLOCK1: Image = None
+    ARROW_N: Image = None
+    ARROW_NE: Image = None
+    ARROW_E: Image = None
+    ARROW_SE: Image = None
+    ARROW_S: Image = None
+    ARROW_SW: Image = None
+    ARROW_W: Image = None
+    ARROW_NW: Image = None
+    TRIANGLE: Image = None
+    TRIANGLE_LEFT: Image = None
+    CHESSBOARD: Image = None
+    DIAMOND: Image = None
+    DIAMOND_SMALL: Image = None
+    SQUARE: Image = None
+    SQUARE_SMALL: Image = None
+    RABBIT: Image = None
+    COW: Image = None
+    MUSIC_CROTCHET: Image = None
+    MUSIC_QUAVER: Image = None
+    MUSIC_QUAVERS: Image = None
+    PITCHFORK: Image = None
+    XMAS: Image = None
+    PACMAN: Image = None
+    TARGET: Image = None
+    TSHIRT: Image = None
+    ROLLERSKATE: Image = None
+    DUCK: Image = None
+    HOUSE: Image = None
+    TORTOISE: Image = None
+    BUTTERFLY: Image = None
+    STICKFIGURE: Image = None
+    GHOST: Image = None
+    SWORD: Image = None
+    GIRAFFE: Image = None
+    SKULL: Image = None
+    UMBRELLA: Image = None
+    SNAKE: Image = None
+    SCISSORS: Image = None
+    ALL_CLOCKS: typing.List[Image] = None
+    ALL_ARROWS: typing.List[Image] = None
 
     def __init__(self, string: str) -> None:
         """
@@ -295,7 +295,7 @@ class Image:
         :param string: Consist of digits 0-9 arranged into lines, describing the image
         """
 
-    def __int__(self, width: int = 5, height: int = 5, buffer: bytearray | None = None) -> None:
+    def __int__(self, width: int = 5, height: int = 5, buffer: typing.Union[bytearray, None] = None) -> None:
         """
         Create an empty image with width columns and height rows.
         :param width: Optional width of the image
@@ -401,8 +401,8 @@ class Image:
 
 
 class SoundEvent:
-    LOUD: SoundEvent
-    QUIET: SoundEvent
+    LOUD: SoundEvent = None
+    QUIET: SoundEvent = None
 
 
 class Sound:
@@ -410,13 +410,13 @@ class Sound:
     The built-in sounds
     """
 
-    GIGGLE: Sound
-    HAPPY: Sound
-    HELLO: Sound
-    MYSTERIOUS: Sound
-    SAD: Sound
-    SLIDE: Sound
-    SOARING: Sound
-    SPRING: Sound
-    TWINKLE: Sound
-    YAWN: Sound
+    GIGGLE: Sound = None
+    HAPPY: Sound = None
+    HELLO: Sound = None
+    MYSTERIOUS: Sound = None
+    SAD: Sound = None
+    SLIDE: Sound = None
+    SOARING: Sound = None
+    SPRING: Sound = None
+    TWINKLE: Sound = None
+    YAWN: Sound = None

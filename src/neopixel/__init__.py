@@ -2,12 +2,11 @@
 Individually addressable RGB and RGBW LED strips
 """
 
-from __future__ import annotations
-from microbit import MicroBitDigitalPin
+import microbit
 
 
 class NeoPixel:
-    def __init__(self, pin: 'MicroBitDigitalPin', n: int, bpp: int = 3):
+    def __init__(self, pin: 'microbit.MicroBitDigitalPin', n: int, bpp: int = 3):
         """
         Initialise a new strip of neopixel LEDs controlled via a pin.
         :param pin: The pin controlling the neopixel strip.

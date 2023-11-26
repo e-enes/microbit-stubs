@@ -2,18 +2,18 @@
 Respond to sound using the built-in microphone (V2 only).
 """
 
-from __future__ import annotations
-from . import SoundEvent
+import typing
+import microbit
 
 
-def current_event() -> 'SoundEvent':
+def current_event() -> 'microbit.SoundEvent':
     """
     Get the last recorded sound event.
     :return: The event, **SoundEvent('loud')** or **SoundEvent('quiet')**.
     """
 
 
-def was_event(event: 'SoundEvent') -> bool:
+def was_event(event: 'microbit.SoundEvent') -> bool:
     """
     Check if a sound was heard at least once since the last call.
     :param event: The event to check for, such as **SoundEvent.LOUD** or **SoundEvent.QUIET**
@@ -21,7 +21,7 @@ def was_event(event: 'SoundEvent') -> bool:
     """
 
 
-def is_event(event: 'SoundEvent') -> bool:
+def is_event(event: 'microbit.SoundEvent') -> bool:
     """
     Check the most recent sound event detected.
     :param event: The event to check for, such as **SoundEvent.LOUD** or **SoundEvent.QUIET**
@@ -29,14 +29,14 @@ def is_event(event: 'SoundEvent') -> bool:
     """
 
 
-def get_events() -> tuple['SoundEvent']:
+def get_events() -> typing.Tuple['microbit.SoundEvent', ...]:
     """
     Get the sound event history as a tuple.
     :return: A tuple of the event history with the most recent event last.
     """
 
 
-def set_threshold(event: 'SoundEvent', value: int) -> None:
+def set_threshold(event: 'microbit.SoundEvent', value: int) -> None:
     """
     Set the threshold for a sound event.
     :param event: The event to check for, such as **SoundEvent.LOUD** or **SoundEvent.QUIET**

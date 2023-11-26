@@ -2,8 +2,8 @@
 Show text, images and animations on the 5×5 LED display
 """
 
-from __future__ import annotations
-from . import Image
+import typing
+import microbit
 
 
 def get_pixel(x: int, y: int) -> int:
@@ -30,7 +30,8 @@ def clear() -> None:
     """
 
 
-def show(image: str | int | 'Image' | list['Image'], delay: int = 400, wait: bool = True, loop: bool = False, clear: bool = False) -> None:
+def show(image: typing.Union[str, int, 'microbit.Image', typing.List['microbit.Image']], delay: int = 400,
+         wait: bool = True, loop: bool = False, clear: bool = False) -> None:
     """
     Shows images, letters or digits on the LED display.
     :param image: A string, number, Image or list of Images to show.
